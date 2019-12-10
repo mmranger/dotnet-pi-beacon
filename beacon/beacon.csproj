@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- <OutputType>Exe</OutputType> -->
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishSingleFile>true</PublishSingleFile>
+    <CrossGenDuringPublish>false</CrossGenDuringPublish>
+  </PropertyGroup>
+<ItemGroup>
+    <PackageReference Include="Tmds.DBus" Version="0.7.0" />
+    <DotNetCliToolReference Include="Tmds.DBus.Tool" Version="0.7.0" />
+  </ItemGroup>
+</Project>
