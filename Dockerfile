@@ -5,8 +5,6 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster-arm32v7 AS build
 
 WORKDIR /app
 
-# COPY ./qemu/qemu-arm /usr/bin/qemu-arm
-
 COPY ./beacon .
 
 # RUN dotnet publish -r linux-arm -c Release -o ./deploy --self-contained true /p:PublishTrimmed=true
@@ -22,5 +20,4 @@ COPY ./beacon .
 
 # COPY --from=build /app/deploy ./app
 
-ENTRYPOINT [ "dotnet --info" ]
-# ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/bin/bash" ]

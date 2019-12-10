@@ -10,17 +10,16 @@ namespace RuralKing.Beacon
 
         static async Task Main(string[] args)
         {
-            if (args.Length < 1 || args.Length > 2 || args[0].ToLowerInvariant() == "-h" || !int.TryParse(args[0], out int scanSeconds))
+            if (args.Length < 1 || args.Length > 3 || args[0].ToLowerInvariant() == "-h" || !int.TryParse(args[1], out int scanSeconds))
             {
                 Console.WriteLine("Usage: scan <SecondsToScan> [adapterName]");
                 Console.WriteLine("Example: scan 15 hci0");
                 return;
             }
-
             IAdapter1 adapter;
-            if (args.Length > 1)
+            if (args.Length > 2)
             {
-                adapter = await BlueZManager.GetAdapterAsync(args[1]);
+                adapter = await BlueZManager.GetAdapterAsync(args[2]);
             }
             else
             {
