@@ -9,17 +9,18 @@ WORKDIR /app
 
 COPY ./beacon .
 
-RUN dotnet publish -r linux-arm -c Release -o ./deploy --self-contained true /p:PublishTrimmed=true
+# RUN dotnet publish -r linux-arm -c Release -o ./deploy --self-contained true /p:PublishTrimmed=true
 
-FROM balenalib/raspberry-pi-alpine:3.8
-RUN install_packages \
-      bluez \
-      # Two dotnet dependencies (even for binary dontnet app)
-      libstdc++ libintl
+# FROM balenalib/raspberry-pi-alpine:3.8
+# RUN install_packages \
+#       bluez \
+#       # Two dotnet dependencies (even for binary dontnet app)
+#       libstdc++ libintl
 
-ENV UDEV=1
-ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+# ENV UDEV=1
+# ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
-COPY --from=build /app/deploy ./app
+# COPY --from=build /app/deploy ./app
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "dotnet --info" ]
+# ENTRYPOINT [ "/bin/bash" ]
